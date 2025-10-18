@@ -36,4 +36,10 @@ public class RsvpServiceImpl implements RsvpService {
     public List<Rsvp> getAll() {
         return this.repository.findAll();
     }
+
+    @Override
+    public boolean delete(String id) {
+        this.repository.deleteById(id);
+        return true;
+    }
 }

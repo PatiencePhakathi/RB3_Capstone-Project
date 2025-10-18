@@ -37,7 +37,6 @@ public class Organizer extends User {
 
     private Organizer(Builder builder) {
         super(builder.password, builder.name, builder.surname, builder.phone, builder.email);
-        this.id = builder.id;
         this.organizerType = builder.organizerType;
     }
 
@@ -48,12 +47,12 @@ public class Organizer extends User {
     @Override
     public String toString() {
         return "Organizer{" +
-                " id=" + id +
-                ", password='" + password + '\'' +
-                ", name='" + name + '\'' +
-                ", phone='" + phone + '\'' +
-                ", surname='" + surname + '\'' +
-                ", email='" + email + '\'' +
+                " id=" + getUserId() +
+                ", password='" + getPassword() + '\'' +
+                ", name='" + getName() + '\'' +
+                ", phone='" + getPhone() + '\'' +
+                ", surname='" + getSurname() + '\'' +
+                ", email='" + getEmail() + '\'' +
                 ", organizerType=" + organizerType +
                 '}';
     }
@@ -103,12 +102,12 @@ public class Organizer extends User {
         }
 
         public Builder copy(Organizer organizer) {
-            this.id = organizer.id;
-            this.password = organizer.password;
-            this.name = organizer.name;
-            this.surname = organizer.surname;
-            this.phone = organizer.phone;
-            this.email = organizer.email;
+            this.id = organizer.getUserId() == null ? 0L : organizer.getUserId();
+            this.password = organizer.getPassword();
+            this.name = organizer.getName();
+            this.surname = organizer.getSurname();
+            this.phone = organizer.getPhone();
+            this.email = organizer.getEmail();
             this.organizerType = organizer.organizerType;
             return this;
         }

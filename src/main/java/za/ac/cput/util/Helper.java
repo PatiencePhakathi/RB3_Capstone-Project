@@ -32,4 +32,8 @@ public class Helper {
         String phoneRegex = "^(\\+?[0-9]{1,3})?([0-9]{10})$";
         return phone.matches(phoneRegex);
     }
+
+    public static String generateId() {
+        return java.util.UUID.randomUUID().toString();
+    }
 }

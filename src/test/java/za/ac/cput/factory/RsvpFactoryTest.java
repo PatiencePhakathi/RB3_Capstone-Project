@@ -1,7 +1,7 @@
 package za.ac.cput.factory;
 
 import org.junit.jupiter.api.Test;
-import za.ac.cput.domain.Enum.Status;
+import za.ac.cput.domain.Rsvp.Status;
 import za.ac.cput.domain.Event;
 import za.ac.cput.domain.Rsvp;
 import za.ac.cput.domain.*;

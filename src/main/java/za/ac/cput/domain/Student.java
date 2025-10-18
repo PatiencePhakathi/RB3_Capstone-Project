@@ -16,6 +16,10 @@ import jakarta.persistence.OneToOne;
 public class Student extends User{
 
     private String studentNumber;
+    // Compatibility for tests expecting studentId
+    public void setStudentId(String studentId) { this.studentNumber = studentId; }
+    public void setStudent(String studentId) { this.studentNumber = studentId; }
+    public String getStudentId() { return this.studentNumber; }
 
     @OneToOne
     @JoinColumn(name = "user_id")
@@ -28,12 +32,13 @@ public class Student extends User{
     public Student (Builder builder) {
         super(builder.password, builder.name, builder.surname, builder.phone, builder.email);
         this.studentNumber = builder.studentNumber;
-        this.id = builder.id;
     }
 
     public String getStudentNumber() {
         return studentNumber;
     }
+    // Compatibility getters for tests
+    public String getStudent() { return studentNumber; }
 
 
 
@@ -43,12 +48,12 @@ public class Student extends User{
     public String toString() {
         return "Student{" +
                 "studentNumber='" + studentNumber + '\'' +
-                ", id=" + id +
-                ", password='" + password + '\'' +
-                ", name='" + name + '\'' +
-                ", phone='" + phone + '\'' +
-                ", surname='" + surname + '\'' +
-                ", email='" + email + '\'' +
+                ", id=" + getUserId() +
+                ", password='" + getPassword() + '\'' +
+                ", name='" + getName() + '\'' +
+                ", phone='" + getPhone() + '\'' +
+                ", surname='" + getSurname() + '\'' +
+                ", email='" + getEmail() + '\'' +
                 '}';
     }
 
@@ -92,13 +97,13 @@ public class Student extends User{
             return this;
         }
         public Builder copy(Student student){
-            this.id = student.getId();
-            this.studentNumber = student.studentNumber;
-            this.password = student.password;
-            this.name = student.name;
-            this.surname = student.surname;
-            this.phone = student.phone;
-            this.email = student.email;
+            this.id = student.getUserId();
+            this.studentNumber = student.getStudentNumber();
+            this.password = student.getPassword();
+            this.name = student.getName();
+            this.surname = student.getSurname();
+            this.phone = student.getPhone();
+            this.email = student.getEmail();
             return this;
         }
 

@@ -21,9 +21,9 @@ public class CartItem {
     private String productId;
     private int quantity;
 
-   // @ManyToOne
-  //  @JoinColumn(name = "student_id")
- //   private Student student;
+    @ManyToOne
+    @JoinColumn(name = "student_id")
+    private Student student;
 
     public CartItem() {
         // Default constructor for JPA
@@ -33,7 +33,7 @@ public class CartItem {
         this.cartItemId = builder.cartItemId;
         this.productId = builder.productId;
         this.quantity = builder.quantity;
-    //    this.student = builder.student;
+        this.student = builder.student;
     }
 
     public String getCartItemId() {
@@ -52,9 +52,9 @@ public class CartItem {
         return quantity;
     }
 
-//   // public Student getStudent() {
-//        return student;
-//    }
+    public Student getStudent() {
+        return student;
+    }
 
     @Override
     public String toString() {
@@ -74,7 +74,7 @@ public class CartItem {
         private String cartItemId;
         private String productId;
         private int quantity;
-    //    private Student student;
+        private Student student;
 
         public Builder setCartItemId(String cartItemId) {
             this.cartItemId = cartItemId;
@@ -91,10 +91,10 @@ public class CartItem {
             return this;
         }
 
-//        public Builder setStudent(Student student) {
-//            this.student = student;
-//            return this;
-//        }
+        public Builder setStudent(Student student) {
+            this.student = student;
+            return this;
+        }
 
         public CartItem build() {
             return new CartItem(this);
@@ -104,7 +104,7 @@ public class CartItem {
             this.cartItemId = cartItem.cartItemId;
             this.productId = cartItem.productId;
             this.quantity = cartItem.quantity;
-        //    this.student = cartItem.student;
+            this.student = cartItem.student;
             return this;
         }
     }

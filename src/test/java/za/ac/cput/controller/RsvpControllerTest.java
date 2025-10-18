@@ -9,7 +9,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import za.ac.cput.domain.Enum.Status;
+import za.ac.cput.domain.Rsvp.Status;
 import za.ac.cput.domain.Rsvp;
 
 import java.time.LocalDate;

@@ -43,4 +43,10 @@ public class CartItemServiceImpl implements CartItemService {
     public List<CartItem> getAll() {
         return this.repository.findAll();
     }
+
+    @Override
+    public boolean delete(String id) {
+        this.repository.deleteById(id);
+        return true;
+    }
 }

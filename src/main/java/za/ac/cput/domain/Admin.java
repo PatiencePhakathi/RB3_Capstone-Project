@@ -40,7 +40,6 @@ public class Admin extends User {
 
     private Admin(Builder builder) {
         super(builder.password, builder.name, builder.surname, builder.phone, builder.email);
-        this.id = builder.id;
         this.adminRole = builder.adminRole;
     }
 
@@ -51,12 +50,12 @@ public class Admin extends User {
     @Override
     public String toString() {
         return "Admin{" +
-                " id=" + id +
-                ", password='" + password + '\'' +
-                ", name='" + name + '\'' +
-                ", phone='" + phone + '\'' +
-                ", surname='" + surname + '\'' +
-                ", email='" + email + '\'' +
+                " id=" + getUserId() +
+                ", password='" + getPassword() + '\'' +
+                ", name='" + getName() + '\'' +
+                ", phone='" + getPhone() + '\'' +
+                ", surname='" + getSurname() + '\'' +
+                ", email='" + getEmail() + '\'' +
                 ", adminRole=" + adminRole +
                 '}';
     }
@@ -71,7 +70,7 @@ public class Admin extends User {
         private AdminRole adminRole;
 
         public Builder setId(Long id) {
-            this.id = id;
+            this.id = id == null ? 0L : id;
             return this;
         }
 
@@ -106,12 +105,12 @@ public class Admin extends User {
         }
 
         public Builder copy(Admin admin) {
-            this.id = admin.id;
-            this.password = admin.password;
-            this.name = admin.name;
-            this.surname = admin.surname;
-            this.phone = admin.phone;
-            this.email = admin.email;
+            this.id = admin.getUserId() == null ? 0L : admin.getUserId();
+            this.password = admin.getPassword();
+            this.name = admin.getName();
+            this.surname = admin.getSurname();
+            this.phone = admin.getPhone();
+            this.email = admin.getEmail();
             this.adminRole = admin.adminRole;
             return this;
         }
